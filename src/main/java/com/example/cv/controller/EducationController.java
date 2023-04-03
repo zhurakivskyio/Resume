@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 @RequiredArgsConstructor
 @Slf4j
-public class ExperienceController {
-    @GetMapping("/experience")
-    public String getAbout () {
-        return "experience/experience";
+public class EducationController {
+    @GetMapping("/education")
+    public String getAbout (){
+        return "education/education";
     }
 }
