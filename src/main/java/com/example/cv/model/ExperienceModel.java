@@ -20,22 +20,22 @@ public class ExperienceModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "position")
-    private String position;
+    @Column(name = "title")
+    private String title;
 
-    @Column(name= "company_name")
-    private String companyName;
+    @Column(name= "subtitle")
+    private String subtitle;
 
     @Column(name = "description")
     private String description;
 
-    @DateTimeFormat(pattern = "MMMM yyyy")
-    @Column(name = "work_start")
-    private Date workStartDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(name = "date_from")
+    private Date dateFrom;
 
-    @DateTimeFormat(pattern = "MMMM yyyy")
-    @Column(name = "work_finish")
-    private Date workFinishDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(name = "date_to")
+    private Date dateTo;
 
 
 }

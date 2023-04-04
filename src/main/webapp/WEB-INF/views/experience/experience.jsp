@@ -11,41 +11,82 @@
             <section class="resume-section" id="experience">
                 <div class="resume-section-content">
                     <h2 class="mb-5">Experience</h2>
+                    <c:forEach items="${experienceModel}" var="item">
                     <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                         <div class="flex-grow-1">
-                            <h3 class="mb-0">Senior Web Developer</h3>
-                            <div class="subheading mb-3">Intelitec Solutions</div>
-                            <p>Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.</p>
+                            <h3 class="mb-0">${item.title}</h3>
+                            <div class="subheading mb-3">${item.subtitle}</div>
+                            <p>${item.description}</p>
+                            <button type="button">Edit</button>
+                            <form method="post" action='<c:url value="/editExperience/${id}"/>'>
+                                <input type="submit" class="btn btn-danger pull-left" value="Delete"/>
+                            </form>
                         </div>
-                        <div class="flex-shrink-0"><span class="text-primary">March 2013 - Present</span></div>
+                        <div class="flex-shrink-0"><span class="text-primary">${item.dateFrom} - ${item.dateTo}</span></div>
+
                     </div>
-                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                        <div class="flex-grow-1">
-                            <h3 class="mb-0">Web Developer</h3>
-                            <div class="subheading mb-3">Intelitec Solutions</div>
-                            <p>Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.</p>
-                        </div>
-                        <div class="flex-shrink-0"><span class="text-primary">December 2011 - March 2013</span></div>
-                    </div>
-                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                        <div class="flex-grow-1">
-                            <h3 class="mb-0">Junior Web Designer</h3>
-                            <div class="subheading mb-3">Shout! Media Productions</div>
-                            <p>Podcasting operational change management inside of workflows to establish a framework. Taking seamless key performance indicators offline to maximise the long tail. Keeping your eye on the ball while performing a deep dive on the start-up mentality to derive convergence on cross-platform integration.</p>
-                        </div>
-                        <div class="flex-shrink-0"><span class="text-primary">July 2010 - December 2011</span></div>
-                    </div>
-                    <div class="d-flex flex-column flex-md-row justify-content-between">
-                        <div class="flex-grow-1">
-                            <h3 class="mb-0">Web Design Intern</h3>
-                            <div class="subheading mb-3">Shout! Media Productions</div>
-                            <p>Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize customer directed convergence without revolutionary ROI.</p>
-                        </div>
-                        <div class="flex-shrink-0"><span class="text-primary">September 2008 - June 2010</span></div>
-                    </div>
+                    </c:forEach>
+
+
+
                 </div>
             </section>
         </div>
+        <form method="post" action='<c:url value="/addExperience"/>'>
+        <!-- Content Row -->
+        <div class="row">
+            <div class="col-xl-12 col-md-12 mb-12">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <div class="form-group row">
+                            <label class="col-2 col-form-label">Company name</label>
+                            <div class="col-10">
+                                <input class="form-control" type="text" name="title" placeholder="enter company name">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-2 col-form-label">Position</label>
+                            <div class="col-10">
+                                <input class="form-control" type="text" name="subtitle" placeholder="enter position name">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-2 col-form-label">Position description</label>
+                            <div class="col-10">
+                                <input class="form-control" type="text" name="description" placeholder="enter position description">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-2 col-form-label">Start of employment</label>
+                            <div class="col-10">
+                                <input class="form-control" type="date" name="dateFrom"
+                                       max="<fmt:formatDate pattern = "MMM yyyy" value = "${now}"/>">
+
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-2 col-form-label">End of employment</label>
+                            <div class="col-10">
+                                <input class="form-control" type="date" name="dateTo"
+                                       max="<fmt:formatDate pattern = "MMM yyyy" value = "${now}"/>">
+
+                            </div>
+                        </div>
+
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+            <input class="btn btn-success pull-left" type="submit" value="Send" id="searchButton"/>
+        </form>
         <%@include file="../dynamic/javaScript.jspf"%>
     </body>
 </html>
