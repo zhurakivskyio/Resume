@@ -27,7 +27,7 @@ public class ExperienceService {
         return repo.findAll();
     }
 
-    public void saveEditExpierence(ExperienceModel editExperience){
+    public void saveEditExperience(ExperienceModel editExperience){
         repo.save(editExperience);
     }
 
@@ -35,4 +35,7 @@ public class ExperienceService {
         repo.deleteById(id);
     }
 
+    public ExperienceModel findById(Long id) {
+        return repo.findById(id).orElse(null);
+    }
 }

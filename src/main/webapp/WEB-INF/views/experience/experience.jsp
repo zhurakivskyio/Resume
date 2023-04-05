@@ -17,8 +17,9 @@
                             <h3 class="mb-0">${item.title}</h3>
                             <div class="subheading mb-3">${item.subtitle}</div>
                             <p>${item.description}</p>
-                            <button type="button">Edit</button>
-                            <form method="post" action='<c:url value="/editExperience/${id}"/>'>
+                            <a class="nav-link" href='<c:url value="/editExperience/${item.id}"/>'
+                               role="button">Edit</a>
+                            <form method="post" action='<c:url value="/removeExperience/${item.id}"/>'>
                                 <input type="submit" class="btn btn-danger pull-left" value="Delete"/>
                             </form>
                         </div>
@@ -62,7 +63,7 @@
                             <label class="col-2 col-form-label">Start of employment</label>
                             <div class="col-10">
                                 <input class="form-control" type="date" name="dateFrom"
-                                       max="<fmt:formatDate pattern = "MMM yyyy" value = "${now}"/>">
+                                       min="1901-12-31" max="<fmt:formatDate pattern = "yyyy-MM-dd" value = "${now}"/>"/>
 
                             </div>
                         </div>
@@ -71,7 +72,8 @@
                             <label class="col-2 col-form-label">End of employment</label>
                             <div class="col-10">
                                 <input class="form-control" type="date" name="dateTo"
-                                       max="<fmt:formatDate pattern = "MMM yyyy" value = "${now}"/>">
+                                       min="1901-12-31" max="<fmt:formatDate pattern = "yyyy-MM-dd" value = "${now}"/>"/>
+
 
                             </div>
                         </div>

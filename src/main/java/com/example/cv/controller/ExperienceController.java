@@ -27,13 +27,25 @@ private final ExperienceService service;
     }
     @PostMapping("/addExperience")
     public RedirectView postEditExperience(ExperienceModel editExperience) {
-        service.saveEditExpierence(editExperience);
+        service.saveEditExperience(editExperience);
         return new RedirectView("/experience");
     }
 
-    @PostMapping("/editExperience")
-    public RedirectView removeStudent(Long id){
+    @PostMapping("/removeExperience/{id}")
+    public RedirectView removeExperience(@PathVariable("id") Long id){
         service.removeExperience(id);
+        return new RedirectView("/experience");
+    }
+
+    @GetMapping("/editExperience/{id}")
+    public String getExperience(@PathVariable("id") Long id, Model model) {
+        ExperienceModel experienceModel = service.findById(id);
+        model.addAttribute("experienceModel", experienceModel);
+        return "experience/editExperience";
+    }
+    @PostMapping("/editExperience/{id}")
+    public RedirectView postEditExperience(@PathVariable("id") Long id, ExperienceModel editExperience) {
+        service.saveEditExperience(editExperience);
         return new RedirectView("/experience");
     }
 
