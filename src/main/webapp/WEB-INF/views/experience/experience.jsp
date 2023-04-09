@@ -1,3 +1,4 @@
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ page contentType="text/html; charset=UTF-8"%>
@@ -17,13 +18,15 @@
                             <h3 class="mb-0">${item.title}</h3>
                             <div class="subheading mb-3">${item.subtitle}</div>
                             <p>${item.description}</p>
+                            <security:authorize access="hasAnyRole('ADMIN')">
                             <a class="nav-link" href='<c:url value="/editExperience/${item.id}"/>'
                                role="button">Edit</a>
                             <form method="post" action='<c:url value="/removeExperience/${item.id}"/>'>
                                 <input type="submit" class="btn btn-danger pull-left" value="Delete"/>
                             </form>
+                            </security:authorize>
                         </div>
-                        <div class="flex-shrink-0"><span class="text-primary">${item.dateFrom} - ${item.dateTo}</span></div>
+                        <div class="flex-shrink-0"><span class="text-primary"><fmt:formatDate pattern = "yyyy.MM" value = "${item.dateFrom}" /> - <fmt:formatDate pattern = "yyyy.MM" value = "${item.dateTo}" /></span></div>
 
                     </div>
                     </c:forEach>
@@ -33,6 +36,7 @@
                 </div>
             </section>
         </div>
+<security:authorize access="hasAnyRole('ADMIN')">
         <form method="post" action='<c:url value="/addExperience"/>'>
         <!-- Content Row -->
         <div class="row">
@@ -89,6 +93,7 @@
         </div>
             <input class="btn btn-success pull-left" type="submit" value="Send" id="searchButton"/>
         </form>
+</security:authorize>
         <%@include file="../dynamic/javaScript.jspf"%>
     </body>
 </html>

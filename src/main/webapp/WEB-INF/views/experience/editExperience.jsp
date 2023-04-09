@@ -44,8 +44,8 @@
                     <div class="form-group row">
                         <label class="col-2 col-form-label">Start of employment</label>
                         <div class="col-10">
-                            <input class="form-control" type="date" name="dateFrom"
-                                   value="${experienceModel.dateFrom}"/>
+                            <fmt:formatDate var="formattedDate" value="${experienceModel.dateFrom}" pattern="yyyy-MM-dd"/>
+                            <input class="form-control" type="date" name="dateFrom" value="${formattedDate}"/>
 
                         </div>
                     </div>
@@ -53,8 +53,8 @@
                     <div class="form-group row">
                         <label class="col-2 col-form-label">End of employment</label>
                         <div class="col-10">
-                            <input class="form-control" type="date" name="dateTo"
-                                   value="${experienceModel.dateFrom}"/>
+                            <fmt:formatDate var="formattedDate" value="${experienceModel.dateTo}" pattern="yyyy-MM-dd"/>
+                            <input class="form-control" type="date" name="dateTo" value="${formattedDate}"/>
 
                         </div>
                     </div>
