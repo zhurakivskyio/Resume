@@ -39,8 +39,8 @@ public class AuthHightLevel {
 
     protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/experience") // mają dostęp wszyscy użytkownicy z ROLE_USER
-                .hasAnyAuthority("ROLE_USER","ROLE_ADMIN")
+//                .antMatchers("/experience") // mają dostęp wszyscy użytkownicy z ROLE_USER
+//                .hasAnyAuthority("ROLE_USER","ROLE_ADMIN")
                 .antMatchers("/")
                 .permitAll()
                 .and()

@@ -37,7 +37,7 @@
                       </div>
                     </div>
                     <input class="btn btn-primary btn-user btn-block" type="submit" value="Login">
-                      Login
+
                     </a>
                     <hr>
                   
